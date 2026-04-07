@@ -1,4 +1,5 @@
 "use client";
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, Loader2, Sparkles, AlertCircle, FileText, Bot, Shield, Scale, Mic, Zap, Paperclip, Download, X } from "lucide-react";
@@ -230,7 +231,7 @@ export default function Home() {
           if (token) headers["Authorization"] = `Bearer ${token}`;
         }
 
-        const res = await fetch("http://127.0.0.1:8000/api/documents/analyze", {
+        const res = await fetch(`${API_URL}/api/documents/analyze`, {
           method: "POST",
           headers,
           body: formData,
@@ -262,7 +263,7 @@ export default function Home() {
         if (token) headers["Authorization"] = `Bearer ${token}`;
       }
 
-      await fetchEventSource("http://127.0.0.1:8000/api/chat", {
+      await fetchEventSource(`${API_URL}/api/chat`, {
         method: "POST",
         headers,
         body: JSON.stringify({
