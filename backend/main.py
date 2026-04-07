@@ -68,11 +68,14 @@ async def lifespan(app: FastAPI):
     init_client()
     logger.info("✓ LLM client initialized (model: %s)", config.GEMINI_MODEL)
 
-    # 8. Build dense vector embeddings (TEMP DISABLED - fix Gemini 400 error)
-    # corpus_sections = retrieval.get_corpus_sections()
-    # embed_count = await embeddings.build_corpus_embeddings(corpus_sections)
-    # logger.info("✓ Dense embeddings: %d vectors", embed_count)
-    logger.info("⚠ Dense embeddings disabled (temporary fix)")
+    # 8. Build dense vector embeddings (SAFE ENABLE)
+    try:
+       corpus_sections = retrieval.get_corpus_sections()
+       embed_count = await embeddings.build_corpus_embeddings(corpus_sections)
+       logger.info("✓ Dense embeddings: %d vectors", embed_count)
+    except Exception as e:
+       logger.error("❌ Embeddings failed: %s", str(e))
+       logger.info("⚠ Continuing without embeddings (fallback active)")
     
     elapsed = (time.monotonic() - start) * 1000
     logger.info("=" * 60)
