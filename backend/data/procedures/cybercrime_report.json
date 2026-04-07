@@ -1,0 +1,21 @@
+{
+  "id": "cybercrime_report",
+  "title": "How to Report Cybercrime",
+  "title_hi": "साइबर अपराध की शिकायत कैसे करें",
+  "description": "Step-by-step guide to reporting online fraud, hacking, identity theft, and other cybercrimes",
+  "category": "cyber",
+  "steps": [
+    {"step_number": 1, "action": "Call 1930 immediately (Cyber Crime Helpline)", "details": "For financial fraud (UPI/net banking/credit card), call 1930 within the first hour. Quick reporting increases chances of recovering your money. The helpline operates 24/7.", "timeline": "Immediate — within 1 hour of fraud", "documents_needed": []},
+    {"step_number": 2, "action": "Contact your bank immediately", "details": "Call your bank's customer care. Request blocking of your account/card/UPI. File a dispute for unauthorized transactions. Banks must resolve disputes within 90 days.", "timeline": "Within 1 hour", "documents_needed": ["Account details", "Transaction IDs"]},
+    {"step_number": 3, "action": "File complaint on cybercrime.gov.in", "details": "Visit cybercrime.gov.in and select complaint category: Financial Fraud, Women/Child Related, or Other Cybercrimes. Create an account and file your complaint with all evidence.", "timeline": "Same day", "documents_needed": ["Screenshots of fraud messages/emails", "Transaction details", "Scammer's phone/email/account details", "Bank statements showing fraud transactions"]},
+    {"step_number": 4, "action": "Save all evidence", "details": "Do NOT delete any messages, emails, or call records from the scammer. Take screenshots of everything. Save URLs, phone numbers, UPI IDs, and account numbers used by the scammer.", "timeline": "Immediate", "documents_needed": ["Screenshots", "Messages", "Call records", "Transaction receipts"]},
+    {"step_number": 5, "action": "File an FIR at the local police station", "details": "Visit your nearest police station with all evidence. File an FIR under IT Act sections 66C (identity theft), 66D (online fraud), or other relevant sections. Get a copy of the FIR.", "timeline": "Same day or next day", "documents_needed": ["All evidence collected", "ID proof", "Bank statements", "Complaint copy from cybercrime.gov.in"]},
+    {"step_number": 6, "action": "Report to RBI (for banking fraud)", "details": "If the fraud involves unauthorized banking transactions, also file a complaint with RBI through their Banking Ombudsman scheme at cms.rbi.org.in.", "timeline": "Within 30 days", "documents_needed": ["Bank complaint reference", "FIR copy"]},
+    {"step_number": 7, "action": "Follow up regularly", "details": "Track your complaint on cybercrime.gov.in using your complaint number. Follow up with the police. Contact the bank's nodal officer if the dispute is not resolved.", "timeline": "Ongoing", "documents_needed": ["Complaint numbers", "FIR copy"]}
+  ],
+  "required_documents": ["Screenshots of fraudulent transactions/messages", "Bank account statements showing unauthorized transactions", "Phone records (call logs, SMS)", "Email correspondence with scammer", "UPI ID/Account details of scammer", "ID proof", "Copy of complaint from cybercrime.gov.in"],
+  "relevant_authorities": [{"name": "Cyber Crime Helpline", "type": "helpline", "contact": "1930", "url": ""}, {"name": "National Cyber Crime Portal", "type": "portal", "contact": "", "url": "cybercrime.gov.in"}, {"name": "RBI Banking Ombudsman", "type": "authority", "contact": "", "url": "cms.rbi.org.in"}, {"name": "Local Cyber Crime Cell", "type": "police", "contact": "Check state police website", "url": ""}],
+  "estimated_timeline": "Financial recovery: 10-90 days. Investigation: 60-90 days.",
+  "helplines": [{"name": "Cyber Crime Helpline", "number": "1930"}, {"name": "Police Emergency", "number": "112"}, {"name": "RBI Customer Care", "number": "14440"}],
+  "tips": ["Report financial fraud within 1 hour for best chance of recovery", "NEVER share OTP, PIN, or password with anyone claiming to be from your bank", "Banks will NEVER ask for your OTP or password over phone", "Save ALL evidence — do not delete messages from scammers", "Change all passwords for compromised accounts immediately", "Enable two-factor authentication on all accounts", "Check if your money can be frozen using the 1930 helpline"]
+}

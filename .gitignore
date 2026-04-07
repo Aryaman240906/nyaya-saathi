@@ -1,0 +1,64 @@
+# ══════════════════════════════════════════════════════════════
+# NYAYA-SAATHI — Root Git Ignore
+# ══════════════════════════════════════════════════════════════
+
+# ── Documentation ─────────────────────────────────────────────
+# Ignore internal docs
+internal/
+
+# Allow README
+!README.md
+
+# ── Environment & Secrets ─────────────────────────────────────
+.env
+.env.local
+.env.*.local
+*.secret
+.jwt_secret
+backend/.env
+backend/.jwt_secret
+
+# ── Python ────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+venv/
+.venv/
+env/
+.Python
+backend/__pycache__/
+backend/**/__pycache__/
+
+# ── Node.js ───────────────────────────────────────────────────
+node_modules/
+.next/
+out/
+.vercel/
+frontend/node_modules/
+frontend/.next/
+
+# ── Database & Runtime ────────────────────────────────────────
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.npy
+*.npz
+*.log
+backend/data/nyaya_saathi.db
+backend/data/embeddings/
+backend/backend.log
+
+# ── IDE & OS ──────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~

@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+python-dotenv
+pydantic
+httpx
+bm25s
+snowballstemmer
+aiosqlite
+python-multipart
+langdetect
+numpy
+python-jose[cryptography]
+passlib[bcrypt]
+bcrypt

@@ -1,0 +1,21 @@
+{
+  "id": "consumer_complaint",
+  "title": "How to File a Consumer Complaint",
+  "title_hi": "उपभोक्ता शिकायत कैसे दर्ज करें",
+  "description": "Step-by-step guide to filing a complaint for defective goods or deficient services",
+  "category": "consumer",
+  "steps": [
+    {"step_number": 1, "action": "First, try to resolve with the seller/company directly", "details": "Send a written complaint (email/letter) to the company's customer care or grievance officer. Keep a copy and note the complaint reference number. Give them 15-30 days to respond.", "timeline": "15-30 days", "documents_needed": ["Purchase bill/receipt", "Product warranty card"]},
+    {"step_number": 2, "action": "Send a legal notice", "details": "If the company doesn't respond or refuses to help, send a formal legal notice through a lawyer or by registered post. This is not mandatory but often prompts action.", "timeline": "15 days response time", "documents_needed": ["Copy of complaint to company", "All correspondence"]},
+    {"step_number": 3, "action": "File complaint on National Consumer Helpline", "details": "Call 1800-11-4000 (toll-free) or file online at consumerhelpline.gov.in. They will mediate between you and the company. This is a free and fast alternative before going to consumer court.", "timeline": "15-30 days", "documents_needed": ["All evidence and correspondence"]},
+    {"step_number": 4, "action": "File in Consumer Court (if mediation fails)", "details": "File your complaint online at edaakhil.nic.in or in person at: District Commission (up to ₹1 crore), State Commission (₹1 crore - ₹10 crore), National Commission (above ₹10 crore).", "timeline": "Filing: same day online", "documents_needed": ["Complaint letter", "Bill/receipt of purchase", "Warranty card", "All correspondence with company", "Evidence of defect/deficiency", "ID proof"]},
+    {"step_number": 5, "action": "Draft your complaint properly", "details": "Include: Your name and address, Opposite party details (seller/company), Facts of the case chronologically, Defect/deficiency details, Relief sought (refund/replacement/compensation), List of documents attached.", "timeline": "1-2 days", "documents_needed": ["All supporting documents"]},
+    {"step_number": 6, "action": "Pay court fee (if applicable)", "details": "No court fee for the first ₹5 lakh. Nominal fee for higher amounts. Senior citizens and SC/ST get fee concessions.", "timeline": "Same day", "documents_needed": ["Fee challan/payment"]},
+    {"step_number": 7, "action": "Attend hearings", "details": "You can represent yourself (no lawyer needed). Attend hearings on scheduled dates. Present your evidence and arguments. The court must decide within 3-5 months.", "timeline": "3-5 months", "documents_needed": ["All original documents"]}
+  ],
+  "required_documents": ["Purchase bill/invoice/receipt", "Warranty/guarantee card", "Proof of payment (bank statement/UPI receipt)", "Written complaint to the company and their response", "Evidence of defect (photos/videos)", "Communication records (emails, messages)", "ID proof", "Address proof"],
+  "relevant_authorities": [{"name": "National Consumer Helpline", "type": "helpline", "contact": "1800-11-4000", "url": "consumerhelpline.gov.in"}, {"name": "E-Daakhil Portal", "type": "portal", "contact": "", "url": "edaakhil.nic.in"}, {"name": "District Consumer Commission", "type": "commission", "contact": "Check district court website", "url": "confonet.nic.in"}, {"name": "CCPA - Central Consumer Protection Authority", "type": "authority", "contact": "", "url": "ccpa.gov.in"}],
+  "estimated_timeline": "Mediation: 30-45 days. Consumer Court: 3-5 months.",
+  "helplines": [{"name": "Consumer Helpline", "number": "1800-11-4000"}, {"name": "NALSA Legal Aid", "number": "15100"}],
+  "tips": ["You DON'T need a lawyer — you can argue your own case", "No court fee for complaints up to ₹5 lakh", "File complaints ONLINE at edaakhil.nic.in from anywhere", "Keep ALL original documents safely", "E-commerce purchases have the same protections", "You can claim compensation for mental agony too", "Time limit: File within 2 years of the cause of action"]
+}

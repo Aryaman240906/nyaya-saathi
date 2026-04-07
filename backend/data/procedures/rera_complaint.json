@@ -1,0 +1,31 @@
+{
+  "id": "rera_complaint",
+  "title": "Filing RERA Complaint Against Builder",
+  "title_hi": "बिल्डर के खिलाफ RERA शिकायत",
+  "description": "Step-by-step guide to file a complaint with RERA Authority against a real estate developer/builder.",
+  "category": "property",
+  "steps": [
+    {"step_number": 1, "action": "Verify RERA Registration", "details": "Check if the project is registered with RERA on your state's RERA website. If the project is NOT registered and the builder is selling, that itself is a major violation. Note the RERA registration number.", "timeline": "1 day", "documents_needed": ["RERA registration number", "Project details"]},
+    {"step_number": 2, "action": "Collect All Documents", "details": "Gather: sale agreement/allotment letter, payment receipts, builder-buyer agreement, correspondence with builder (emails, letters), brochure/advertisement showing promised amenities and delivery date, bank loan documents.", "timeline": "1-2 days", "documents_needed": ["Sale agreement", "Payment receipts", "Builder correspondence", "Project brochure", "Bank loan documents"]},
+    {"step_number": 3, "action": "Send Written Complaint to Builder", "details": "Before filing with RERA, send a written complaint to the builder via registered post/email. State your grievance clearly — delayed possession, structural defects, plan changes, etc. Give 15 days to respond.", "timeline": "15 days", "documents_needed": ["Written complaint letter", "Postal receipt"]},
+    {"step_number": 4, "action": "File Online RERA Complaint", "details": "Visit your state's RERA website and file the complaint online. Fill in: your details, project RERA number, builder details, nature of complaint, relief sought. Pay the prescribed fee (usually Rs. 1,000-5,000). Attach all supporting documents.", "timeline": "1 day to file; RERA should resolve within 60 days", "documents_needed": ["All documents from Step 2", "Written complaint to builder", "Online complaint form", "Fee payment"]},
+    {"step_number": 5, "action": "Attend RERA Hearing", "details": "RERA Authority will schedule a hearing and send notice to the builder. You can appear in person or through a lawyer. Present your case with all evidence. The builder must respond.", "timeline": "Hearing within 30 days of filing", "documents_needed": []},
+    {"step_number": 6, "action": "RERA Order and Appeal", "details": "RERA can order: refund with interest, possession with delay compensation, structural defect repair, or penalty on builder. If unsatisfied with the RERA order, appeal to RERA Appellate Tribunal within 60 days.", "timeline": "Order within 60 days; Appeal within 60 days of order", "documents_needed": []}
+  ],
+  "required_documents": ["Sale/Allotment Agreement", "Payment receipts (all)", "Builder-buyer agreement", "Email/letter correspondence", "Project brochure with promised features", "RERA registration number", "Bank loan documents (if any)", "Photos of defects (if applicable)"],
+  "relevant_authorities": [
+    {"name": "State RERA Authority", "type": "authority", "contact": "State-specific RERA website"},
+    {"name": "RERA Appellate Tribunal", "type": "tribunal", "contact": "State-specific"},
+    {"name": "Consumer Court", "type": "court", "contact": "Alternative forum for consumer complaints"}
+  ],
+  "estimated_timeline": "RERA resolution: 60-90 days. Appeal: additional 60-90 days.",
+  "helplines": [],
+  "tips": [
+    "You can file BOTH a RERA complaint and a consumer court complaint simultaneously",
+    "Interest on refund is usually SBI's highest lending rate + 2%",
+    "For structural defects, the builder MUST repair within 30 days (for 5 years after possession)",
+    "Group complaints with other buyers are stronger — coordinate with your flat owners' association",
+    "Always calculate the total amount (including interest) before accepting any settlement offer from the builder",
+    "If the builder's RERA registration is revoked, you still have rights under the Act"
+  ]
+}

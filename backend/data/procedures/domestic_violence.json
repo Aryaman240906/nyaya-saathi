@@ -1,0 +1,37 @@
+{
+  "id": "domestic_violence",
+  "title": "Filing Domestic Violence Complaint",
+  "title_hi": "घरेलू हिंसा शिकायत दर्ज करना",
+  "description": "Step-by-step guide to file a domestic violence complaint under the Protection of Women from Domestic Violence Act 2005.",
+  "category": "family",
+  "steps": [
+    {"step_number": 1, "action": "Ensure Your Immediate Safety", "details": "If you are in immediate danger, call 100 (Police) or 181 (Women Helpline). Move to a safe location — a relative's house, friend's place, or contact a shelter home through the Women Helpline.", "timeline": "Immediate", "documents_needed": []},
+    {"step_number": 2, "action": "Gather Evidence of Violence", "details": "Collect any evidence: photos of injuries, threatening messages/recordings, medical reports from hospital visits, witness statements from neighbours or family. Even without evidence, you can file a complaint.", "timeline": "As soon as possible", "documents_needed": ["Photos of injuries", "Medical reports", "WhatsApp/SMS screenshots", "Witness contacts"]},
+    {"step_number": 3, "action": "Contact the Protection Officer", "details": "Every district has a designated Protection Officer under the DV Act. Contact them through the District Women & Child Development office, or through Women Helpline 181. The Protection Officer will help you file the complaint.", "timeline": "1-2 days", "documents_needed": ["ID proof (Aadhaar/Voter ID)"]},
+    {"step_number": 4, "action": "File a Domestic Incident Report (DIR)", "details": "The Protection Officer will help you fill out the Domestic Incident Report form. This is a detailed form documenting the violence — physical, emotional, economic, or sexual. Be as specific as possible about incidents.", "timeline": "1 day", "documents_needed": ["Personal details form", "Marriage certificate (if available)", "Address proof"]},
+    {"step_number": 5, "action": "File Application Before Magistrate", "details": "With the Protection Officer's help, file an application before the Magistrate Court under Section 12 of the DV Act. You can seek: Protection Order, Residence Order, Monetary Relief, Custody Order, and Compensation.", "timeline": "1-2 days", "documents_needed": ["DIR form", "Medical evidence", "Marriage certificate", "Income proof of respondent"]},
+    {"step_number": 6, "action": "Attend Court Hearing", "details": "The Magistrate must issue notice to the respondent and schedule a hearing. You can request an ex-parte order (without the abuser being present) in urgent cases. Free legal aid is available through DLSA.", "timeline": "First hearing within 3 days of application (for urgent matters)", "documents_needed": []},
+    {"step_number": 7, "action": "Obtain Protection Order", "details": "If the court grants a Protection Order, the respondent is legally prohibited from committing any act of violence, entering your workplace, or contacting you. Violation of this order is punishable with jail up to 1 year.", "timeline": "Court decides within 60 days", "documents_needed": []}
+  ],
+  "required_documents": ["Aadhaar Card or ID proof", "Marriage certificate (if available)", "Medical reports of injuries", "Photos/videos of violence or damage", "FIR copy (if filed)", "Income proof of respondent"],
+  "relevant_authorities": [
+    {"name": "Women Helpline", "type": "helpline", "contact": "181"},
+    {"name": "Police Emergency", "type": "helpline", "contact": "100"},
+    {"name": "NCW (National Commission for Women)", "type": "commission", "contact": "011-26944880 / ncw.nic.in"},
+    {"name": "Protection Officer", "type": "officer", "contact": "Available at District Women & Child Development Office"},
+    {"name": "DLSA (District Legal Services Authority)", "type": "legal_aid", "contact": "nalsa.gov.in / 15100"}
+  ],
+  "estimated_timeline": "Protection Order: 3-60 days. Full case resolution: 2-6 months.",
+  "helplines": [
+    {"name": "Women Helpline", "number": "181", "hours": "24/7"},
+    {"name": "Police", "number": "100", "hours": "24/7"},
+    {"name": "NCW WhatsApp", "number": "7217735372", "hours": "24/7"}
+  ],
+  "tips": [
+    "You do NOT need to file a police FIR first — you can directly approach the Protection Officer or Magistrate",
+    "Domestic violence includes emotional abuse, economic deprivation, and threats — not just physical violence",
+    "You have the right to continue living in the shared household even if the property is not in your name",
+    "Free legal aid is available through DLSA — you don't need to hire a private lawyer",
+    "Keep a diary of incidents with dates and details — this strengthens your case"
+  ]
+}

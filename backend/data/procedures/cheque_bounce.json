@@ -1,0 +1,29 @@
+{
+  "id": "cheque_bounce",
+  "title": "Filing Cheque Bounce Case (Section 138 NI Act)",
+  "title_hi": "चेक बाउंस केस दर्ज करना (धारा 138)",
+  "description": "Step-by-step guide to file a cheque bounce (dishonour) case under Section 138 of the Negotiable Instruments Act.",
+  "category": "financial",
+  "steps": [
+    {"step_number": 1, "action": "Get the Bank Memo", "details": "When the cheque bounces, your bank will issue a 'Cheque Return Memo' stating the reason for dishonour (insufficient funds, account closed, etc.). Keep this memo safely — it is critical evidence.", "timeline": "1-3 days after presenting cheque", "documents_needed": ["Cheque Return Memo from bank"]},
+    {"step_number": 2, "action": "Send Legal Demand Notice", "details": "Send a written legal notice to the cheque issuer demanding payment within 15 days. The notice MUST be sent within 30 days of receiving the bank memo. Send via registered post/speed post with acknowledgement due. Keep the postal receipt.", "timeline": "Must be sent within 30 days of memo", "documents_needed": ["Original bounced cheque (photocopy)", "Bank return memo", "Demand notice (typed)"]},
+    {"step_number": 3, "action": "Wait 15 Days for Payment", "details": "After the notice is delivered, wait for 15 days. If the person pays the full cheque amount within 15 days, the matter is settled. If they don't pay, you can proceed to file a case.", "timeline": "15 days after notice delivery", "documents_needed": []},
+    {"step_number": 4, "action": "File Criminal Complaint", "details": "If payment is not made within 15 days, file a criminal complaint before the Judicial Magistrate within 30 days of the expiry of the 15-day notice period. The complaint should include all evidence and a prayer for punishment and compensation.", "timeline": "File within 30 days after 15-day notice period expires", "documents_needed": ["Original bounced cheque", "Bank return memo", "Copy of demand notice", "Postal receipt and acknowledgement", "Bank statement showing cheque presentation", "Any underlying agreement/invoice"]},
+    {"step_number": 5, "action": "Attend Court Proceedings", "details": "The Magistrate will examine your complaint and issue summons to the accused. In summary trial, the process is faster. You can also request interim compensation of up to 20% of the cheque amount.", "timeline": "First hearing within 1-2 months", "documents_needed": []},
+    {"step_number": 6, "action": "Obtain Judgment", "details": "If the court finds the accused guilty, the punishment can be imprisonment up to 2 years and/or fine up to twice the cheque amount. The court can also order compensation equal to the cheque amount.", "timeline": "6-12 months (summary trial)", "documents_needed": []}
+  ],
+  "required_documents": ["Original bounced cheque", "Bank Cheque Return Memo", "Legal demand notice with postal proof", "Bank statement", "Agreement/invoice showing the underlying debt", "ID proof"],
+  "relevant_authorities": [
+    {"name": "Judicial Magistrate First Class", "type": "court", "contact": "District court where cheque was drawn"},
+    {"name": "Legal Aid (DLSA)", "type": "legal_aid", "contact": "15100 / nalsa.gov.in"}
+  ],
+  "estimated_timeline": "Total: 3-12 months from cheque bounce to judgment",
+  "helplines": [],
+  "tips": [
+    "STRICT DEADLINES: Miss any deadline and your case may be dismissed — notice within 30 days, case within 30 days after notice period",
+    "Keep the ORIGINAL cheque safe — do not hand it over to anyone except the court",
+    "The notice must clearly state the cheque amount, cheque number, date, and bank details",
+    "You can file the case where the cheque was presented (your bank's location), not necessarily where the issuer lives",
+    "If the cheque was given as a gift or donation (not for debt), Section 138 does not apply"
+  ]
+}

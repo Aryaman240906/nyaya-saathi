@@ -1,0 +1,21 @@
+{
+  "id": "bail_application",
+  "title": "How to Apply for Bail",
+  "title_hi": "ज़मानत (बेल) के लिए आवेदन कैसे करें",
+  "description": "Step-by-step guide to bail application for bailable and non-bailable offences",
+  "category": "criminal",
+  "steps": [
+    {"step_number": 1, "action": "Determine the type of offence", "details": "Check if the offence is BAILABLE or NON-BAILABLE. Bailable offences (less serious): Bail is a RIGHT — the police station itself must grant bail. Non-bailable offences (serious): Bail is at the court's discretion.", "timeline": "Immediate", "documents_needed": ["FIR copy"]},
+    {"step_number": 2, "action": "For bailable offences: Apply at police station", "details": "Under Section 436 CrPC, for bailable offences, the SHO must grant bail at the police station itself. You just need a surety (guarantor). If police refuse, approach the Magistrate who MUST grant bail.", "timeline": "Same day", "documents_needed": ["Surety bond", "Surety's ID and address proof"]},
+    {"step_number": 3, "action": "For non-bailable offences: File bail application in court", "details": "Hire a lawyer and file a bail application under Section 437 CrPC in the court of the Magistrate. Include: details of the case, grounds for bail, accused's personal details, undertaking to cooperate.", "timeline": "1-3 days for hearing", "documents_needed": ["Bail application", "FIR copy", "Accused's ID proof", "Surety documents", "Medical reports (if applicable)"]},
+    {"step_number": 4, "action": "Anticipatory Bail (pre-arrest)", "details": "If you apprehend arrest, apply for anticipatory bail under Section 438 CrPC in the Sessions Court or High Court. If granted, you won't be taken to jail upon arrest.", "timeline": "1-7 days for hearing", "documents_needed": ["Anticipatory bail application", "Supporting documents", "Challenge to allegations"]},
+    {"step_number": 5, "action": "Attend the bail hearing", "details": "The judge will consider: nature of offence, evidence strength, flight risk, likelihood of tampering with evidence, accused's roots in community, health conditions.", "timeline": "1-7 days", "documents_needed": ["All supporting documents"]},
+    {"step_number": 6, "action": "If bail is granted — fulfill conditions", "details": "Bail conditions typically include: surrender passport, regular reporting to police station, not leaving jurisdiction, not contacting witnesses, furnishing surety bond.", "timeline": "Same day after order", "documents_needed": ["Bail bond", "Surety bond", "Passport (for surrender)"]},
+    {"step_number": 7, "action": "If bail is rejected — appeal to higher court", "details": "Sessions Court rejection: Appeal to High Court under Section 439 CrPC. High Court rejection: Appeal to Supreme Court under Article 136/142.", "timeline": "7-14 days", "documents_needed": ["Rejection order", "Fresh bail application", "Additional grounds"]}
+  ],
+  "required_documents": ["FIR copy", "Bail application (drafted by lawyer)", "ID proof of accused", "Address proof of accused", "Surety bond", "Surety's ID and property documents", "Medical reports (if health issue)", "Employment proof (to show roots in community)"],
+  "relevant_authorities": [{"name": "District/Sessions Court", "type": "court", "contact": "", "url": "districts.ecourts.gov.in"}, {"name": "High Court", "type": "court", "contact": "", "url": "State High Court website"}, {"name": "NALSA (Free Legal Aid)", "type": "authority", "contact": "15100", "url": "nalsa.gov.in"}],
+  "estimated_timeline": "Bailable offence: same day. Non-bailable: 1-7 days. Anticipatory bail: 3-7 days.",
+  "helplines": [{"name": "NALSA Legal Aid", "number": "15100"}, {"name": "District Legal Services Authority", "number": "Check local directory"}],
+  "tips": ["For bailable offences, bail is a RIGHT — police cannot refuse", "You have the right to a free lawyer if you can't afford one (call 15100)", "Default bail: If chargesheet is not filed within 60/90 days, you get bail automatically", "Section 436A CrPC: If you've been in jail for half the maximum sentence, you must be released", "Medical grounds can strengthen bail applications", "Cooperating with investigation improves bail chances"]
+}

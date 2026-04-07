@@ -1,0 +1,21 @@
+{
+  "id": "rti_application",
+  "title": "How to File an RTI Application",
+  "title_hi": "RTI आवेदन कैसे दाखिल करें",
+  "description": "Step-by-step guide to filing a Right to Information application",
+  "category": "governance",
+  "steps": [
+    {"step_number": 1, "action": "Identify the public authority", "details": "Determine which government department or public body has the information you need. Example: Municipality for building permits, Police for crime statistics, etc.", "timeline": "1 day", "documents_needed": []},
+    {"step_number": 2, "action": "Write your RTI application", "details": "Write a simple letter/application addressed to the Public Information Officer (PIO) of the authority. Include: Your name and address, Subject of information sought, Specific questions (be precise), Period for which information is needed.", "timeline": "1 day", "documents_needed": ["ID proof"]},
+    {"step_number": 3, "action": "Pay the RTI fee", "details": "RTI fee is ₹10 for Central Government. State fees vary (₹10-50). BPL category applicants are EXEMPT from fee. Payment by postal order, demand draft, or cash.", "timeline": "Same day", "documents_needed": ["BPL card (if applicable)"]},
+    {"step_number": 4, "action": "Submit the application", "details": "Submit online at rtionline.gov.in (Central) or State RTI portal. Or submit by post/in person to the PIO of the concerned department.", "timeline": "Same day", "documents_needed": ["RTI application", "Fee payment proof"]},
+    {"step_number": 5, "action": "Wait for response (30 days)", "details": "The PIO must respond within 30 days. For life/liberty matters: 48 hours. If information involves another department, response time is 35 days.", "timeline": "30 days (48 hours for urgent)", "documents_needed": []},
+    {"step_number": 6, "action": "File first appeal if unsatisfied", "details": "If no response or unsatisfactory response within 30 days, file First Appeal to the First Appellate Authority within 30 days. The appeal must be decided within 30-45 days.", "timeline": "30 days from response/non-response", "documents_needed": ["Original RTI application copy", "Response received", "Appeal letter"]},
+    {"step_number": 7, "action": "File second appeal to Information Commission", "details": "If first appeal is unsatisfactory, file Second Appeal to the Central/State Information Commission within 90 days. The Commission has power to penalize the PIO ₹250/day (max ₹25,000) for non-compliance.", "timeline": "90 days from first appeal decision", "documents_needed": ["All previous correspondence", "Appeal letter"]}
+  ],
+  "required_documents": ["RTI application (written or typed)", "Fee of ₹10 (postal order/DD/cash)", "ID proof", "BPL card (for fee exemption)"],
+  "relevant_authorities": [{"name": "RTI Online Portal (Central)", "type": "portal", "contact": "", "url": "rtionline.gov.in"}, {"name": "Central Information Commission", "type": "authority", "contact": "011-26105773", "url": "cic.gov.in"}, {"name": "State Information Commission", "type": "authority", "contact": "Check state website", "url": ""}],
+  "estimated_timeline": "Response: 30 days. First Appeal: 30-45 days. Second Appeal: 45-60 days.",
+  "helplines": [{"name": "RTI Information", "number": "011-26105773"}, {"name": "NALSA Legal Aid", "number": "15100"}],
+  "tips": ["Keep your questions specific and clear", "One RTI application can have multiple questions", "You don't need to give a reason for seeking information", "BPL applicants don't need to pay any fee", "File online at rtionline.gov.in for fastest processing", "If PIO is not identified, address it to the head of the department"]
+}

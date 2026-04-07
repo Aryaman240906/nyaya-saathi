@@ -1,0 +1,185 @@
+"""
+Enhanced Grounding Validator + Critic Layer.
+
+Ensures LLM responses are grounded in retrieved legal context:
+- Citation validation (Section Verifier)
+- Haiku Critic (lightweight quality check)
+- Pydantic schema enforcement
+- Confidence scoring with multi-factor analysis
+- Uncertainty injection
+"""
+from __future__ import annotations
+import re
+import logging
+
+from models.schemas import LegalSection
+import config
+
+logger = logging.getLogger(__name__)
+
+_client_ready = False
+
+
+def init_grounding_client(ready: bool):
+    """Set the Gemini client for Haiku Critic."""
+    global _client_ready
+    _client_ready = ready
+
+
+def validate_citations(
+    response_text: str,
+    retrieved_sections: list[LegalSection],
+) -> dict:
+    """
+    Check if legal citations in the response match retrieved context.
+    Enhanced with section-to-act cross-referencing.
+    """
+    cited_sections = set()
+    patterns = [
+        r'[Ss]ection\s+(\d+[A-Za-z]*)',
+        r'[Aa]rticle\s+(\d+[A-Za-z]*)',
+        r'(?:IPC|CrPC|BNS|CPA|IT\s*Act)\s+[Ss](?:ection|ec\.?)\s*(\d+[A-Za-z]*)',
+        r'[Ss]ec\.\s*(\d+[A-Za-z]*)',
+    ]
+    for pattern in patterns:
+        matches = re.findall(pattern, response_text)
+        cited_sections.update(matches)
+
+    retrieved_section_numbers = {s.section_number for s in retrieved_sections}
+    retrieved_ids = {s.id for s in retrieved_sections}
+
+    grounded = cited_sections & retrieved_section_numbers
+    ungrounded = cited_sections - retrieved_section_numbers
+
+    # Check if ungrounded sections appear in related_sections
+    all_related = set()
+    for s in retrieved_sections:
+        for ref in s.related_sections:
+            # Extract section number from ref like "ipc_302" → "302"
+            match = re.search(r'(\d+[A-Za-z]*)', ref)
+            if match:
+                all_related.add(match.group(1))
+
+    loosely_grounded = ungrounded & all_related
+    truly_ungrounded = ungrounded - all_related
+
+    grounding_ratio = len(grounded | loosely_grounded) / max(len(cited_sections), 1)
+
+    return {
+        "total_citations": len(cited_sections),
+        "grounded_citations": len(grounded),
+        "loosely_grounded": len(loosely_grounded),
+        "ungrounded_citations": list(truly_ungrounded),
+        "grounding_ratio": round(grounding_ratio, 2),
+        "is_grounded": grounding_ratio >= 0.7,
+        "cited_sections": list(cited_sections),
+    }
+
+
+def compute_confidence(
+    retrieval_scores: list[float],
+    grounding_report: dict,
+    has_context: bool,
+    debate_confidence: float | None = None,
+) -> float:
+    """
+    Enhanced confidence scoring with multiple factors:
+    - Retrieval quality (0-0.3)
+    - Grounding ratio (0-0.3)
+    - Context availability (0-0.15)
+    - Debate consensus (0-0.25) — if debate mode
+    """
+    if not has_context:
+        return 0.15
+
+    # Retrieval score component (0-0.3)
+    if retrieval_scores:
+        avg_retrieval = sum(retrieval_scores[:5]) / len(retrieval_scores[:5])
+        retrieval_component = min(avg_retrieval * 8, 0.3)
+    else:
+        retrieval_component = 0.0
+
+    # Grounding component (0-0.3)
+    grounding_component = grounding_report.get("grounding_ratio", 0) * 0.3
+
+    # Context component (0-0.15)
+    context_component = 0.15 if has_context else 0.0
+
+    # Debate consensus component (0-0.25)
+    if debate_confidence is not None:
+        debate_component = debate_confidence * 0.25
+    else:
+        debate_component = 0.1  # Default for simple mode
+
+    confidence = retrieval_component + grounding_component + context_component + debate_component
+    return round(min(confidence, 1.0), 2)
+
+
+async def haiku_critic(
+    response_text: str,
+    query: str,
+    context: str,
+) -> dict:
+    """
+    Lightweight Haiku Critic — fast quality evaluation.
+    Uses a minimal prompt to check for obvious issues.
+    """
+    if not _client_ready or not response_text:
+        return {"score": 0.7, "issues": [], "skipped": True}
+
+    try:
+        from services import gemini_rest
+        prompt = (
+            f"Rate this legal response on a scale of 1-10 for accuracy, completeness, "
+            f"and clarity. List any factual issues. Be very brief.\n\n"
+            f"Query: {query[:200]}\n"
+            f"Response: {response_text[:1000]}\n\n"
+            f"Output JSON: {{\"score\": N, \"issues\": [\"issue1\"], \"assessment\": \"brief text\"}}"
+        )
+        response = await gemini_rest.generate_content(
+            contents=[{"role": "user", "parts": [{"text": prompt}]}],
+            temperature=0.1,
+            max_output_tokens=200,
+            response_mime_type="application/json",
+        )
+        import json
+        parsed = json.loads(response.strip())
+        return {
+            "score": parsed.get("score", 7) / 10,
+            "issues": parsed.get("issues", []),
+            "assessment": parsed.get("assessment", ""),
+        }
+    except Exception as e:
+        logger.debug("Haiku critic failed: %s", e)
+        return {"score": 0.7, "issues": [], "skipped": True}
+
+
+def inject_uncertainty(text: str, confidence: float) -> str:
+    """Add uncertainty markers for low-confidence responses."""
+    if confidence < 0.25:
+        prefix = (
+            "⚠️ **Note:** I could not find highly relevant legal provisions for your "
+            "specific query in my database. The following information is general in nature "
+            "and may not fully address your situation. Please consult a qualified lawyer "
+            "for precise legal advice.\n\n"
+        )
+        return prefix + text
+    elif confidence < 0.45:
+        prefix = (
+            "📋 **Note:** Based on the available legal provisions, here is what I found. "
+            "Some aspects may require further legal consultation for complete accuracy.\n\n"
+        )
+        return prefix + text
+    return text
+
+
+def add_disclaimer(text: str) -> str:
+    """Append standard legal disclaimer."""
+    disclaimer = (
+        "\n\n---\n"
+        "⚖️ *Disclaimer: This information is provided for educational and awareness "
+        "purposes only. It does not constitute legal advice. For specific legal matters, "
+        "please consult a qualified advocate. You can reach NALSA Legal Aid at 15100 "
+        "for free legal assistance.*"
+    )
+    return text + disclaimer

@@ -1,0 +1,31 @@
+{
+  "id": "property_registration",
+  "title": "Property Registration & Mutation",
+  "title_hi": "संपत्ति पंजीकरण और म्यूटेशन",
+  "description": "Step-by-step guide to register property and complete mutation of land/property records.",
+  "category": "property",
+  "steps": [
+    {"step_number": 1, "action": "Verify Property Title", "details": "Before purchasing, verify the property title through the Sub-Registrar office. Check the Encumbrance Certificate (EC) for the last 30 years to ensure no existing loans, mortgages, or disputes on the property.", "timeline": "1-2 weeks", "documents_needed": ["Encumbrance Certificate", "Previous sale deeds", "Property tax receipts", "Approved building plan"]},
+    {"step_number": 2, "action": "Draft and Execute Sale Deed", "details": "Get a sale deed drafted by a lawyer. Both buyer and seller must sign the deed. The sale deed must include: property description, sale consideration, payment details, and delivery of possession.", "timeline": "1-2 days", "documents_needed": ["Sale deed draft", "ID proof of both parties", "Property documents", "PAN cards of both parties"]},
+    {"step_number": 3, "action": "Pay Stamp Duty", "details": "Pay stamp duty as applicable in your state (typically 5-7% of property value). Stamp duty can be paid online or at authorised banks. Keep the stamp duty receipt.", "timeline": "1 day", "documents_needed": ["Sale deed", "Property valuation", "Stamp duty payment receipt"]},
+    {"step_number": 4, "action": "Register at Sub-Registrar Office", "details": "Both buyer and seller must visit the Sub-Registrar office with 2 witnesses. Submit the sale deed, stamp duty receipt, and all documents. Pay the registration fee (typically 1% of property value). Biometric verification will be done.", "timeline": "1 day at office; registration completion in 7-15 days", "documents_needed": ["Original sale deed with stamp duty", "ID proof of buyer, seller, and 2 witnesses", "Passport-size photographs", "Property tax receipts", "Previous sale deed originals", "PAN card"]},
+    {"step_number": 5, "action": "Apply for Mutation", "details": "After registration, apply for mutation (name change) in the revenue/municipal records. Submit the registered sale deed to the Tehsildar (for land) or Municipal Corporation (for urban property). This transfers the property tax liability to your name.", "timeline": "15-45 days", "documents_needed": ["Registered sale deed copy", "Application form", "Property tax receipt", "ID proof"]},
+    {"step_number": 6, "action": "Update Property Tax Records", "details": "Visit the local municipal office to update the property tax records in your name. Going forward, all property tax and utility bills should be in your name.", "timeline": "7-15 days", "documents_needed": ["Registered sale deed", "Mutation certificate", "ID proof"]}
+  ],
+  "required_documents": ["Encumbrance Certificate (30 years)", "Previous chain of sale deeds", "Approved building plan", "Property tax receipts", "PAN card", "Aadhaar card", "Passport-size photographs", "Stamp duty payment receipt"],
+  "relevant_authorities": [
+    {"name": "Sub-Registrar Office", "type": "registration", "contact": "District Sub-Registrar"},
+    {"name": "Tehsildar/Revenue Office", "type": "mutation", "contact": "Taluk/Tehsil Office"},
+    {"name": "Municipal Corporation", "type": "tax", "contact": "Local municipal body"}
+  ],
+  "estimated_timeline": "Registration: 7-15 days. Mutation: 15-45 days. Total: 1-2 months.",
+  "helplines": [],
+  "tips": [
+    "ALWAYS get an Encumbrance Certificate before buying — it reveals hidden loans and disputes",
+    "Many states now offer online property registration — check your state's portal",
+    "Keep certified copies of all documents — originals should be kept in a bank locker",
+    "Under RERA, for new properties from builders, the builder must register the project first",
+    "If the seller refuses to execute the sale deed after agreement, you can file a suit for specific performance",
+    "For inherited property, you need a succession certificate or probate instead of a sale deed"
+  ]
+}

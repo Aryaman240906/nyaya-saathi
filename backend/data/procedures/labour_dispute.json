@@ -1,0 +1,20 @@
+{
+  "id": "labour_dispute",
+  "title": "How to File a Labour/Employment Complaint",
+  "title_hi": "श्रम/रोज़गार शिकायत कैसे दर्ज करें",
+  "description": "Step-by-step guide for workplace disputes including unpaid wages, wrongful termination, and harassment",
+  "category": "labour",
+  "steps": [
+    {"step_number": 1, "action": "Document the violation", "details": "Collect evidence: salary slips, appointment letter, termination letter, messages, emails, attendance records, witness contacts. Document dates and details of the violation.", "timeline": "Immediate", "documents_needed": ["Appointment letter", "Salary slips", "Attendance records"]},
+    {"step_number": 2, "action": "Send a written complaint to employer", "details": "Write a formal complaint to your employer/HR department detailing the violation. Send by email and registered post for proof. Give 15 days to respond.", "timeline": "15 days for response", "documents_needed": ["Complaint letter"]},
+    {"step_number": 3, "action": "File complaint with Labour Commissioner", "details": "Visit your District Labour Commissioner office or file online on the Shram Suvidha Portal (shramsuvidha.gov.in). Provide all evidence and details.", "timeline": "1-7 days", "documents_needed": ["All employment documents", "Evidence of violation", "ID proof"]},
+    {"step_number": 4, "action": "Attend conciliation hearing", "details": "The Labour Commissioner will call both parties for conciliation. Attend with your documents. Many disputes are resolved at this stage.", "timeline": "30-45 days", "documents_needed": ["All evidence"]},
+    {"step_number": 5, "action": "If unresolved — file case in Labour Court", "details": "If conciliation fails, the Labour Commissioner will refer the dispute to the Industrial Tribunal/Labour Court. You can also directly approach the court.", "timeline": "3-12 months", "documents_needed": ["All previous correspondence", "Conciliation failure report"]},
+    {"step_number": 6, "action": "For sexual harassment — Internal Complaints Committee", "details": "File complaint with the Internal Complaints Committee (ICC) of your workplace under the POSH Act. Employers with 10+ employees MUST have an ICC. If no ICC exists, approach the Local Complaints Committee.", "timeline": "90 days for inquiry", "documents_needed": ["Written complaint", "Evidence"]}
+  ],
+  "required_documents": ["Appointment/offer letter", "Salary slips (last 6 months)", "Bank statements showing salary credits", "Termination/resignation letter", "Employment contract", "Attendance records", "Email/message communications", "ID proof"],
+  "relevant_authorities": [{"name": "Labour Helpline", "type": "helpline", "contact": "14434", "url": ""}, {"name": "Shram Suvidha Portal", "type": "portal", "contact": "", "url": "shramsuvidha.gov.in"}, {"name": "District Labour Commissioner", "type": "authority", "contact": "District office", "url": ""}, {"name": "EPFO (PF related)", "type": "authority", "contact": "1800-118-005", "url": "epfindia.gov.in"}],
+  "estimated_timeline": "Conciliation: 30-45 days. Labour Court: 6-12 months.",
+  "helplines": [{"name": "Labour Helpline", "number": "14434"}, {"name": "EPFO Helpline", "number": "1800-118-005"}, {"name": "Women Helpline (harassment)", "number": "181"}],
+  "tips": ["Always keep a copy of your appointment letter and salary slips", "Unpaid salary must be paid within 7-10 days of the due date", "Minimum wages are set by the government — check current rates", "Wrongful termination without notice period entitles you to compensation", "PF contributions are mandatory — check your UAN status", "Workplace sexual harassment complaints must be resolved within 90 days"]
+}

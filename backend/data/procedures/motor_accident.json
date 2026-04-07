@@ -1,0 +1,32 @@
+{
+  "id": "motor_accident_claim",
+  "title": "Motor Accident Compensation Claim",
+  "title_hi": "मोटर दुर्घटना मुआवजा दावा",
+  "description": "Step-by-step guide to file a motor accident compensation claim with the Motor Accidents Claims Tribunal (MACT).",
+  "category": "traffic",
+  "steps": [
+    {"step_number": 1, "action": "Get Immediate Medical Treatment", "details": "Rush the injured person to the nearest hospital. Under Section 134A of MV Act, hospitals CANNOT refuse treatment to accident victims citing lack of payment. Get all medical records and bills.", "timeline": "Immediate", "documents_needed": ["Hospital admission records", "Medical reports", "Treatment bills"]},
+    {"step_number": 2, "action": "File FIR / Police Report", "details": "File an FIR at the nearest police station or call 100. If the driver fled (hit-and-run), still file the FIR. Request a copy of the FIR and the police investigation report (MVI report).", "timeline": "Within 24 hours", "documents_needed": ["FIR copy", "Accident spot details"]},
+    {"step_number": 3, "action": "Gather Evidence and Documents", "details": "Collect: accident photographs, vehicle registration details (of the offending vehicle), driver's licence details, insurance policy details, witness statements, CCTV footage if available.", "timeline": "1-2 weeks", "documents_needed": ["Photos of accident scene", "Vehicle RC copy", "Insurance policy details", "Witness statements", "CCTV footage"]},
+    {"step_number": 4, "action": "File Claim with MACT", "details": "File an application under Section 166/163A of MV Act before the Motor Accidents Claims Tribunal (MACT) in the district where the accident occurred or where the claimant resides. No court fees required.", "timeline": "No time limit, but file as early as possible", "documents_needed": ["FIR copy", "Medical records", "Income proof", "Age proof", "Driving licence of deceased/injured", "Insurance policy copy"]},
+    {"step_number": 5, "action": "Attend MACT Hearings", "details": "The Tribunal will hear both sides. The insurance company of the offending vehicle is usually the party that pays compensation. For hit-and-run cases, compensation is paid by the government.", "timeline": "6-18 months", "documents_needed": []},
+    {"step_number": 6, "action": "Receive Compensation", "details": "Compensation is calculated based on: age, income, nature of injuries/death, medical expenses, loss of consortium (for death cases), and future loss of earnings. Minimum: Rs. 5 lakh for death, Rs. 2.5 lakh for permanent disability.", "timeline": "After tribunal order — payment within 30 days", "documents_needed": []}
+  ],
+  "required_documents": ["FIR copy", "Medical records and bills", "Income proof (salary slips, ITR)", "Age proof", "Vehicle details", "Insurance policy details", "Death certificate (in case of death)", "Photos of accident"],
+  "relevant_authorities": [
+    {"name": "Motor Accidents Claims Tribunal", "type": "tribunal", "contact": "District Court Complex"},
+    {"name": "Police (FIR)", "type": "police", "contact": "100"},
+    {"name": "Emergency Medical", "type": "helpline", "contact": "108"},
+    {"name": "Road Accident Help", "type": "helpline", "contact": "1033"}
+  ],
+  "estimated_timeline": "Filing to compensation: 6-24 months",
+  "helplines": [{"name": "Road Accident Emergency", "number": "1033", "hours": "24/7"}, {"name": "Ambulance", "number": "108", "hours": "24/7"}],
+  "tips": [
+    "No court fees required for filing MACT claim",
+    "You DON'T need to prove who was at fault for claiming under Section 163A (no-fault liability)",
+    "Hospitals cannot refuse treatment to accident victims — this is legally mandated",
+    "If the offending vehicle is uninsured, the claim can still be filed against the vehicle owner",
+    "For hit-and-run cases, the government compensates — minimum Rs. 50,000 for injury, Rs. 2 lakh for death",
+    "Free legal aid is available through DLSA for accident victims"
+  ]
+}

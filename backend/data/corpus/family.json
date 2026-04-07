@@ -1,0 +1,94 @@
+{
+  "act": "Hindu Marriage Act 1955 / Special Marriage Act 1954 / Protection of Women from Domestic Violence Act 2005",
+  "short_name": "FAMILY",
+  "description": "Family laws governing marriage, divorce, maintenance, domestic violence, and custody in India.",
+  "sections": [
+    {
+      "id": "family_1", "section_number": "HMA-13", "title": "Grounds for Divorce (Hindu Marriage Act)",
+      "chapter": "Divorce", "keywords": ["divorce", "grounds", "cruelty", "desertion", "adultery", "talaq"],
+      "text": "Any marriage solemnized under this Act may be dissolved by a decree of divorce on petition by either party on the grounds: (i) adultery, (ii) cruelty, (iii) desertion for not less than two continuous years, (iv) conversion to another religion, (v) unsoundness of mind, (vi) venereal disease, (vii) renunciation of the world, (viii) not heard alive for seven years.",
+      "simplified": "You can file for divorce on grounds including: your spouse committed adultery, treated you with cruelty, deserted you for 2+ years, converted to another religion, or has been missing for 7+ years.",
+      "category": "family", "subcategory": "divorce", "related_sections": ["family_2", "family_3"], "punishment": ""
+    },
+    {
+      "id": "family_2", "section_number": "HMA-13B", "title": "Divorce by Mutual Consent",
+      "chapter": "Divorce", "keywords": ["mutual consent", "divorce", "separation", "6 months", "agreement"],
+      "text": "Subject to provisions of this Act a petition for dissolution of marriage by a decree of divorce may be presented to the district court by both the parties together on the ground that they have been living separately for a period of one year or more, that they have not been able to live together and that they have mutually agreed that the marriage should be dissolved. After 6 months but before 18 months from the date of the petition, the court shall pass a decree of divorce.",
+      "simplified": "Both husband and wife can jointly file for mutual consent divorce if they've lived separately for 1+ year. After a 6-month cooling off period (which courts sometimes waive), the divorce is granted.",
+      "category": "family", "subcategory": "divorce", "related_sections": ["family_1"], "punishment": ""
+    },
+    {
+      "id": "family_3", "section_number": "HMA-24", "title": "Maintenance Pendente Lite and Expenses of Proceedings",
+      "chapter": "Maintenance", "keywords": ["maintenance", "alimony", "spouse support", "interim maintenance"],
+      "text": "Where in any proceeding under this Act it appears to the court that either the wife or the husband, as the case may be, has no independent income sufficient for her or his support, the court may order the respondent to pay to the petitioner the expenses of the proceeding and monthly during the proceeding.",
+      "simplified": "If you don't have enough income during the divorce proceedings, you can ask the court to order your spouse to pay interim maintenance (monthly support) and cover your legal expenses.",
+      "category": "family", "subcategory": "maintenance", "related_sections": ["family_4"], "punishment": ""
+    },
+    {
+      "id": "family_4", "section_number": "HMA-25", "title": "Permanent Alimony and Maintenance",
+      "chapter": "Maintenance", "keywords": ["permanent alimony", "maintenance", "after divorce", "support"],
+      "text": "Any court exercising jurisdiction under this Act may, at the time of passing any decree or at any time subsequent thereto, order that the respondent shall pay to the applicant for maintenance and support such gross sum or such monthly or periodical sum for a term not exceeding the life of the applicant as the court considers just.",
+      "simplified": "After divorce, the court can order one spouse to pay permanent maintenance (alimony) to the other, based on their income, assets, and needs. The amount can be a lump sum or monthly payments.",
+      "category": "family", "subcategory": "maintenance", "related_sections": ["family_3"], "punishment": ""
+    },
+    {
+      "id": "family_5", "section_number": "HMA-26", "title": "Custody of Children",
+      "chapter": "Custody", "keywords": ["child custody", "custody", "children", "guardian", "visitation"],
+      "text": "In any proceeding under this Act, the court may make such interim orders and pass such decree regarding the custody, maintenance and education of minor children as the court may deem necessary, always keeping in view the welfare of the children.",
+      "simplified": "In divorce cases, the court decides child custody based on what is best for the child's welfare. Both parents can seek custody, and the court usually favors the mother for children below 5 years.",
+      "category": "family", "subcategory": "custody", "related_sections": ["family_1"], "punishment": ""
+    },
+    {
+      "id": "family_6", "section_number": "DVA-3", "title": "Definition of Domestic Violence",
+      "chapter": "Domestic Violence", "keywords": ["domestic violence", "abuse", "cruelty", "harassment", "DV"],
+      "text": "Domestic violence includes any act, omission, or conduct of the respondent that: (a) harms or injures or endangers the health, safety, life, limb or well-being (physical abuse), (b) includes sexual abuse, (c) verbal and emotional abuse — insults, ridicule, humiliation, threats, (d) economic abuse — deprivation of financial resources, prohibition from employment, not allowing access to household items.",
+      "simplified": "Domestic violence is not just physical beating. It includes: sexual abuse, verbal abuse (insults, threats), emotional abuse (humiliation), and economic abuse (not giving money, stopping you from working). All these are crimes under the DV Act.",
+      "category": "family", "subcategory": "domestic_violence", "related_sections": ["family_7", "family_8"], "punishment": ""
+    },
+    {
+      "id": "family_7", "section_number": "DVA-12", "title": "Application to Magistrate (DV Act)",
+      "chapter": "Domestic Violence", "keywords": ["complaint", "magistrate", "DV", "domestic violence", "file case"],
+      "text": "An aggrieved person or a Protection Officer or any other person on behalf of the aggrieved person may present an application to the Magistrate seeking one or more of the following reliefs: protection orders, residence orders, monetary reliefs, custody orders, compensation orders.",
+      "simplified": "If you are a victim of domestic violence, you can file an application before the Magistrate seeking: protection from the abuser, right to stay in the shared household, monetary compensation, and child custody.",
+      "category": "family", "subcategory": "domestic_violence", "related_sections": ["family_6", "family_8"], "punishment": ""
+    },
+    {
+      "id": "family_8", "section_number": "DVA-17", "title": "Right to Reside in Shared Household",
+      "chapter": "Domestic Violence", "keywords": ["shared household", "residence", "right to stay", "eviction", "DV"],
+      "text": "Every woman in a domestic relationship shall have the right to reside in the shared household, whether or not she has any right, title or beneficial interest in the same. The Magistrate may restrain the respondent from dispossessing or in any manner disturbing the possession of the aggrieved person from the shared household.",
+      "simplified": "Even if the house is not in your name, you have the legal right to continue living in the shared household. Your husband or in-laws cannot throw you out. The court can pass a specific order preventing your eviction.",
+      "category": "family", "subcategory": "domestic_violence", "related_sections": ["family_6", "family_7"], "punishment": ""
+    },
+    {
+      "id": "family_9", "section_number": "DVA-31", "title": "Penalty for Breach of Protection Order",
+      "chapter": "Domestic Violence", "keywords": ["penalty", "protection order", "breach", "punishment", "DV"],
+      "text": "A breach of protection order by the respondent shall be an offence punishable with imprisonment of either description for a term which may extend to one year, or with fine which may extend to twenty thousand rupees, or with both.",
+      "simplified": "If the abuser violates a court protection order, they can be imprisoned for up to 1 year and/or fined up to Rs. 20,000.",
+      "category": "family", "subcategory": "domestic_violence", "related_sections": ["family_7"],
+      "punishment": "Imprisonment up to 1 year, fine up to Rs. 20,000, or both"
+    },
+    {
+      "id": "family_10", "section_number": "SMA-4", "title": "Conditions for Special Marriage Act",
+      "chapter": "Marriage", "keywords": ["inter-religion", "inter-caste", "special marriage", "civil marriage", "court marriage"],
+      "text": "A marriage between any two persons may be solemnized under this Act if: (a) neither party has a spouse living, (b) neither party is of unsound mind, (c) the male has completed 21 years and the female 18 years of age, (d) the parties are not within the degrees of prohibited relationship. 30 days notice must be given to the Marriage Officer.",
+      "simplified": "Anyone from any religion can get married under the Special Marriage Act (court marriage). Requirements: both must be unmarried, male 21+ and female 18+ years old. You need to give 30 days notice to the Marriage Officer.",
+      "category": "family", "subcategory": "marriage", "related_sections": [], "punishment": ""
+    },
+    {
+      "id": "family_11", "section_number": "CRPC-125", "title": "Maintenance of Wives, Children and Parents (CrPC)",
+      "chapter": "Maintenance", "keywords": ["maintenance", "wife", "children", "parents", "alimony", "monthly support"],
+      "text": "If any person having sufficient means neglects or refuses to maintain his wife (unable to maintain herself), his legitimate or illegitimate minor child, his legitimate or illegitimate child who is majorly mentally or physically disabled, or his father or mother who is unable to maintain himself or herself, a Magistrate of the first class may order such person to make a monthly allowance.",
+      "simplified": "Under Section 125 CrPC, you can get maintenance from your husband/father if: (1) Wife — if unable to maintain herself, (2) Children — until they are adults, (3) Parents — if they can't support themselves. This applies regardless of religion.",
+      "category": "family", "subcategory": "maintenance", "related_sections": ["family_3", "family_4"], "punishment": ""
+    },
+    {
+      "id": "family_12", "section_number": "IPC-498A", "title": "Husband or Relative Subjecting Woman to Cruelty",
+      "chapter": "Cruelty", "keywords": ["498A", "cruelty", "dowry", "harassment", "husband", "in-laws"],
+      "text": "Whoever, being the husband or the relative of the husband of a woman, subjects such woman to cruelty shall be punished with imprisonment for a term which may extend to three years and shall also be liable to fine. Cruelty means: (a) any wilful conduct driving the woman to commit suicide or causing grave injury, (b) harassment for dowry.",
+      "simplified": "If a husband or his relatives harass a woman for dowry or subject her to any cruelty, they can be imprisoned for up to 3 years and fined. This is a non-bailable and cognizable offence — police can arrest without warrant.",
+      "category": "family", "subcategory": "dowry",
+      "related_sections": ["family_6"],
+      "punishment": "Imprisonment up to 3 years and fine"
+    }
+  ]
+}

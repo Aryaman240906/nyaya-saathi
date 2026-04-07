@@ -1,0 +1,23 @@
+{
+  "id": "fir_filing",
+  "title": "How to File an FIR (First Information Report)",
+  "title_hi": "एफआईआर (प्रथम सूचना रिपोर्ट) कैसे दर्ज करें",
+  "description": "Step-by-step guide to filing an FIR at the police station for cognizable offences",
+  "category": "criminal",
+  "steps": [
+    {"step_number": 1, "action": "Go to the nearest police station", "details": "Visit the police station that has jurisdiction over the area where the crime occurred. You can file an FIR at ANY police station under Zero FIR provision — the police will transfer it to the correct station later.", "timeline": "Immediate", "documents_needed": []},
+    {"step_number": 2, "action": "Meet the Station House Officer (SHO) or duty officer", "details": "Ask to speak with the SHO or the officer on duty. Tell them you want to file an FIR. You can also file an FIR with any officer present at the station.", "timeline": "Immediate", "documents_needed": []},
+    {"step_number": 3, "action": "Narrate the incident clearly", "details": "Provide a detailed account: What happened, When (date and time), Where (exact location), Who was involved (name/description of accused if known), How it happened, Any witnesses present. Be precise and truthful.", "timeline": "15-30 minutes", "documents_needed": ["ID proof (Aadhaar/Voter ID)"]},
+    {"step_number": 4, "action": "The officer records your statement", "details": "Under Section 154 CrPC, the police officer MUST write down your complaint in Hindi/English. They CANNOT refuse to register an FIR for a cognizable offence. If they refuse, this is an offence under IPC Section 166A.", "timeline": "30-60 minutes", "documents_needed": []},
+    {"step_number": 5, "action": "Read and verify the FIR", "details": "The officer must read the FIR back to you. Check that all facts are correctly recorded. Make corrections if needed before signing.", "timeline": "10-15 minutes", "documents_needed": []},
+    {"step_number": 6, "action": "Sign the FIR", "details": "Sign the FIR after verification. You can also get witnesses to sign if present.", "timeline": "5 minutes", "documents_needed": []},
+    {"step_number": 7, "action": "Get a free copy of the FIR", "details": "The police MUST give you a free copy of the FIR immediately. This is your legal right under Section 154 CrPC. Keep this safely — you will need it.", "timeline": "Immediate", "documents_needed": []},
+    {"step_number": 8, "action": "Note down the FIR number and investigating officer details", "details": "Record: FIR number, Date of registration, Name and phone number of the Investigating Officer (IO), Police station name and phone number.", "timeline": "5 minutes", "documents_needed": []},
+    {"step_number": 9, "action": "Follow up on investigation", "details": "The police must investigate and file a chargesheet within 60-90 days. Follow up regularly with the IO. If no action is taken, approach the SP/DSP or file a complaint with the Magistrate under Section 156(3) CrPC.", "timeline": "60-90 days", "documents_needed": ["FIR copy"]}
+  ],
+  "required_documents": ["Photo ID (Aadhaar/Voter ID/Passport/Driving License)", "Address proof", "Evidence (photos, videos, messages, medical reports)", "Witness contact details"],
+  "relevant_authorities": [{"name": "Police Station (local jurisdiction)", "type": "police", "contact": "112", "url": ""}, {"name": "Superintendent of Police (SP)", "type": "police", "contact": "District SP office", "url": ""}, {"name": "Judicial Magistrate", "type": "court", "contact": "District Court", "url": "districts.ecourts.gov.in"}, {"name": "Online FIR (select states)", "type": "portal", "contact": "", "url": "State police website"}],
+  "estimated_timeline": "FIR registration: same day. Investigation: 60-90 days.",
+  "helplines": [{"name": "Police Emergency", "number": "112"}, {"name": "Women Helpline", "number": "181"}, {"name": "NALSA Legal Aid", "number": "15100"}],
+  "tips": ["You can file an FIR in ANY language you are comfortable with", "Women complainants can request a female officer", "You can bring a witness when filing the FIR", "If police refuse, write a complaint to the SP or approach the Magistrate under Section 156(3)", "Zero FIR: You can file at ANY police station regardless of jurisdiction", "E-FIR facility is available in many states through the state police portal"]
+}
