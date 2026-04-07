@@ -68,11 +68,12 @@ async def lifespan(app: FastAPI):
     init_client()
     logger.info("✓ LLM client initialized (model: %s)", config.GEMINI_MODEL)
 
-    # 8. Build dense vector embeddings
-    corpus_sections = retrieval.get_corpus_sections()
-    embed_count = await embeddings.build_corpus_embeddings(corpus_sections)
-    logger.info("✓ Dense embeddings: %d vectors", embed_count)
-
+    # 8. Build dense vector embeddings (TEMP DISABLED - fix Gemini 400 error)
+    # corpus_sections = retrieval.get_corpus_sections()
+    # embed_count = await embeddings.build_corpus_embeddings(corpus_sections)
+    # logger.info("✓ Dense embeddings: %d vectors", embed_count)
+    logger.info("⚠ Dense embeddings disabled (temporary fix)")
+    
     elapsed = (time.monotonic() - start) * 1000
     logger.info("=" * 60)
     logger.info("  NYAYA-SAATHI 3.0 — Ready! (%.0fms startup)", elapsed)
