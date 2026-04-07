@@ -106,13 +106,10 @@ app = FastAPI(
 register_middleware(app)
 
 # ── CORS ────────────────────────────────────────────────────────────
+# ── CORS ────────────────────────────────────────────────────────────
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        config.FRONTEND_URL,
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-    ],
+    allow_origins=["*"],  # allow all (fixes CORS)
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
