@@ -361,6 +361,16 @@ async def delete_session(session_id: str, user_id: str) -> bool:
         return cursor.rowcount > 0
 
 
+async def delete_anonymous_session(session_id: str) -> bool:
+    """Delete an anonymous session (no user_id). Returns True if deleted."""
+    async with db_session() as db:
+        cursor = await db.execute(
+            "DELETE FROM sessions WHERE id = ? AND (user_id IS NULL OR user_id = '')",
+            (session_id,),
+        )
+        return cursor.rowcount > 0
+
+
 async def update_session_title(session_id: str, title: str):
     """Update session title."""
     now = datetime.now(timezone.utc).isoformat()

@@ -44,6 +44,13 @@ export default function AuthPage() {
 
     try {
       if (isLogin) {
+        // Clear any stale tokens before login to prevent state conflicts
+        if (typeof window !== "undefined") {
+          localStorage.removeItem("ns_access_token");
+          localStorage.removeItem("ns_refresh_token");
+          localStorage.removeItem("ns_user");
+          localStorage.removeItem("ns_current_session");
+        }
         await login(email, password);
       } else {
         await signup(email, password, name);
@@ -56,7 +63,7 @@ export default function AuthPage() {
       if (msg.includes("409") || msg.includes("already registered")) {
         setError("This email is already registered. Try signing in instead.");
       } else if (msg.includes("401") || msg.includes("Invalid")) {
-        setError("Invalid email or password. Please check and try again.");
+        setError("Invalid email or password. If you previously created an account, the server may have been restarted. Please create a new account.");
       } else if (msg.includes("422") || msg.includes("validation")) {
         setError("Please check your input. Email must be valid and password at least 6 characters.");
       } else if (msg.includes("fetch") || msg.includes("Failed") || msg.includes("NetworkError")) {

@@ -288,13 +288,29 @@ export default function Home() {
             case "response":
               if (chunk.data.text) {
                 responseText += chunk.data.text;
-                // Add an artificial typing feel by updating the message buffer
                 setFinalResponse(responseText); 
               }
               break;
-            case "debate_complete":
-              // Backend finishes. If brand new session, update URL/ID behind scenes
+            case "thinking":
+              // Capture session_id from thinking chunk (sent early in pipeline)
               if (chunk.data.session_id && !currentSessionId) {
+                setCurrentSessionId(chunk.data.session_id);
+              }
+              break;
+            case "debate_complete":
+              if (chunk.data.session_id && !currentSessionId) {
+                setCurrentSessionId(chunk.data.session_id);
+              }
+              break;
+            case "sources":
+              // Sources chunk may contain session_id and metadata
+              if (chunk.data.session_id && !currentSessionId) {
+                setCurrentSessionId(chunk.data.session_id);
+              }
+              break;
+            case "done":
+              // Done chunk always contains session_id
+              if (chunk.data.session_id) {
                 setCurrentSessionId(chunk.data.session_id);
               }
               break;
@@ -306,7 +322,7 @@ export default function Home() {
         onerror(err) {
           console.error("SSE Error:", err);
           setError("Connection lost. Please try again.");
-          throw err; // Stop retrying
+          throw err;
         }
       });
 
@@ -320,7 +336,6 @@ export default function Home() {
       setError("Failed to communicate with the reasoning engine.");
     } finally {
       setIsLoading(false);
-      // We leave setDebateVisible(true) so the user can inspect the final graph
     }
   };
 

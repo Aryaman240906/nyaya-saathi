@@ -7,7 +7,8 @@ Merges results from:
 3. Structured document navigation
 4. Cross-reference graph traversal
 
-With configurable per-stream weights and Haiku reranking.
+With configurable per-stream weights, dynamic weight adjustment,
+and clean structured context building for LLM consumption.
 """
 from __future__ import annotations
 import logging
@@ -19,17 +20,60 @@ logger = logging.getLogger(__name__)
 RRF_K = 60
 
 
+# ── Dynamic Retrieval Weights ───────────────────────────────────
+def get_dynamic_weights(intent: str, query: str = "") -> dict[str, float]:
+    """
+    Return per-stream weights adjusted by query intent.
+    - Procedural/factual → boost BM25 (keyword-heavy queries)
+    - Situational/rights  → boost Dense (semantic queries)
+    """
+    # Start from config defaults
+    weights = {
+        "bm25": config.WEIGHT_BM25,
+        "dense": config.WEIGHT_DENSE,
+        "structured": config.WEIGHT_STRUCTURED,
+        "cross_ref": config.WEIGHT_CROSS_REF,
+    }
+
+    if intent in ("procedural", "factual"):
+        # Keyword-heavy: boost BM25 + structured, dampen dense
+        weights["bm25"] *= 1.3
+        weights["structured"] *= 1.2
+        weights["dense"] *= 0.7
+    elif intent in ("situational", "rights"):
+        # Semantic-heavy: boost dense, slightly dampen BM25
+        weights["dense"] *= 1.4
+        weights["bm25"] *= 0.8
+    elif intent == "comparative":
+        # Comparative needs broad coverage
+        weights["cross_ref"] *= 1.5
+        weights["structured"] *= 1.3
+
+    return weights
+
+
 def fuse(
     bm25_results: list[tuple[LegalSection, float]],
     structured_results: list[tuple[LegalSection, float]],
     top_k: int = 10,
     dense_results: list[tuple[LegalSection, float]] | None = None,
     cross_ref_results: list[tuple[LegalSection, float]] | None = None,
+    weights: dict[str, float] | None = None,
 ) -> list[tuple[LegalSection, float, str]]:
     """
     Weighted Reciprocal Rank Fusion across up to 4 retrieval streams.
     Returns: list of (LegalSection, fused_score, best_retrieval_method) tuples.
+
+    Args:
+        weights: Optional dynamic weights dict. If None, uses config defaults.
     """
+    w = weights or {
+        "bm25": config.WEIGHT_BM25,
+        "dense": config.WEIGHT_DENSE,
+        "structured": config.WEIGHT_STRUCTURED,
+        "cross_ref": config.WEIGHT_CROSS_REF,
+    }
+
     rrf_scores: dict[str, float] = {}
     section_map: dict[str, LegalSection] = {}
     method_map: dict[str, set] = {}
@@ -42,14 +86,14 @@ def fuse(
             method_map.setdefault(sid, set()).add(method)
 
     # Score each stream with its weight
-    _score_stream(bm25_results, "bm25", config.WEIGHT_BM25)
-    _score_stream(structured_results, "structured", config.WEIGHT_STRUCTURED)
+    _score_stream(bm25_results, "bm25", w["bm25"])
+    _score_stream(structured_results, "structured", w["structured"])
 
     if dense_results:
-        _score_stream(dense_results, "dense", config.WEIGHT_DENSE)
+        _score_stream(dense_results, "dense", w["dense"])
 
     if cross_ref_results:
-        _score_stream(cross_ref_results, "cross_ref", config.WEIGHT_CROSS_REF)
+        _score_stream(cross_ref_results, "cross_ref", w["cross_ref"])
 
     # Sort by fused score
     ranked = sorted(rrf_scores.items(), key=lambda x: x[1], reverse=True)
@@ -93,16 +137,63 @@ def results_to_sources(
     ]
 
 
+# ── Context Builder (Clean Structured Input for LLM) ───────────
+def build_llm_context(
+    fused_results: list[tuple[LegalSection, float, str]],
+    max_sections: int | None = None,
+    max_chars: int | None = None,
+) -> str:
+    """
+    Build a clean, structured context block for LLM consumption.
+    Token-efficient: no HTML, no CSS classes. Just numbered legal sections
+    with act, section number, legal text, simplified text, and metadata.
+    """
+    limit_sections = max_sections or config.CONTEXT_MAX_SECTIONS
+    limit_chars = max_chars or config.CONTEXT_MAX_CHARS
+
+    context_parts = []
+    char_count = 0
+
+    for i, (section, score, method) in enumerate(fused_results[:limit_sections], 1):
+        entry = (
+            f"[{i}] {section.short_name} — Section {section.section_number}: {section.title}\n"
+            f"    Legal Text: {section.text}\n"
+            f"    Simplified: {section.simplified}\n"
+        )
+        if section.punishment:
+            entry += f"    Punishment: {section.punishment}\n"
+        if section.category:
+            entry += f"    Category: {section.category}"
+            if section.subcategory:
+                entry += f" > {section.subcategory}"
+            entry += "\n"
+        if section.related_sections:
+            entry += f"    Related: {', '.join(section.related_sections[:5])}\n"
+        entry += "\n"
+
+        if char_count + len(entry) > limit_chars:
+            break
+        context_parts.append(entry)
+        char_count += len(entry)
+
+    if not context_parts:
+        return ""
+
+    header = f"=== RETRIEVED LEGAL PROVISIONS ({len(context_parts)} sections) ===\n\n"
+    return header + "".join(context_parts)
+
+
 def build_context(
     fused_results: list[tuple[LegalSection, float, str]],
     max_chars: int = 8000,
 ) -> str:
-    """Build context string from fused results for LLM consumption."""
+    """Build context string from fused results for LLM consumption.
+    (Legacy — kept for backward compatibility. Prefer build_llm_context.)
+    """
     context_parts = []
     char_count = 0
 
     for section, score, method in fused_results:
-        # Use HTML Details/Summary block for beautiful native accordions in Next.js via rehype-raw
         entry = (
             f"<details class=\"mb-4 bg-white/5 border border-white/10 rounded-xl overflow-hidden\">\n"
             f"<summary class=\"px-4 py-3 cursor-pointer text-sm font-semibold text-indigo-300 hover:bg-white/5 transition-colors list-none flex items-center justify-between\">\n"

@@ -65,6 +65,33 @@ WEIGHT_DENSE: float = float(os.getenv("WEIGHT_DENSE", "0.8"))
 WEIGHT_STRUCTURED: float = float(os.getenv("WEIGHT_STRUCTURED", "0.9"))
 WEIGHT_CROSS_REF: float = float(os.getenv("WEIGHT_CROSS_REF", "0.6"))
 
-# ── Audit ───────────────────────────────────────────────────────────
+# ── Per-Stream Top-K Controls ───────────────────────────────────
+TOP_K_BM25: int = int(os.getenv("TOP_K_BM25", "8"))
+TOP_K_DENSE: int = int(os.getenv("TOP_K_DENSE", "6"))
+TOP_K_STRUCTURED: int = int(os.getenv("TOP_K_STRUCTURED", "5"))
+TOP_K_CROSS_REF: int = int(os.getenv("TOP_K_CROSS_REF", "3"))
+
+# ── Debate Fallback ─────────────────────────────────────────────
+DEBATE_TIMEOUT_SECONDS: int = int(os.getenv("DEBATE_TIMEOUT_SECONDS", "45"))
+
+# ── Pipeline Cache (full-response) ──────────────────────────────
+PIPELINE_CACHE_ENABLED: bool = os.getenv("PIPELINE_CACHE_ENABLED", "true").lower() == "true"
+PIPELINE_CACHE_TTL: int = int(os.getenv("PIPELINE_CACHE_TTL", "900"))  # 15 minutes
+
+# ── Context Builder Limits ──────────────────────────────────────
+CONTEXT_MAX_SECTIONS: int = int(os.getenv("CONTEXT_MAX_SECTIONS", "6"))
+CONTEXT_MAX_CHARS: int = int(os.getenv("CONTEXT_MAX_CHARS", "6000"))
+
+# ── Hard Grounding ──────────────────────────────────────────────
+GROUNDING_HARD_MODE: bool = os.getenv("GROUNDING_HARD_MODE", "true").lower() == "true"
+
+# ── Post-Response Safety ────────────────────────────────────────
+POST_RESPONSE_SAFETY: bool = os.getenv("POST_RESPONSE_SAFETY", "true").lower() == "true"
+LOW_CONFIDENCE_THRESHOLD: float = float(os.getenv("LOW_CONFIDENCE_THRESHOLD", "0.35"))
+
+# ── Execution Layer ─────────────────────────────────────────────
+EXECUTION_LAYER_ENABLED: bool = os.getenv("EXECUTION_LAYER_ENABLED", "true").lower() == "true"
+
+# ── Audit ───────────────────────────────────────────────────────
 AUDIT_ENABLED: bool = os.getenv("AUDIT_ENABLED", "true").lower() == "true"
 RATE_LIMIT_PER_MINUTE: int = int(os.getenv("RATE_LIMIT_PER_MINUTE", "30"))

@@ -99,20 +99,24 @@ class InMemoryCache:
 _query_cache: InMemoryCache | None = None
 _llm_cache: InMemoryCache | None = None
 _embedding_cache: InMemoryCache | None = None
+_pipeline_cache: InMemoryCache | None = None
 _rate_limiter: dict[str, list[float]] = {}
 _rate_lock = threading.Lock()
 
 
 def init_cache():
-    global _query_cache, _llm_cache, _embedding_cache
+    global _query_cache, _llm_cache, _embedding_cache, _pipeline_cache
     if not config.CACHE_ENABLED:
         logger.info("Cache disabled by configuration")
         return
     _query_cache = InMemoryCache(config.CACHE_MAX_ENTRIES, config.CACHE_TTL_SECONDS)
     _llm_cache = InMemoryCache(config.CACHE_MAX_ENTRIES // 2, config.CACHE_LLM_TTL)
     _embedding_cache = InMemoryCache(config.CACHE_MAX_ENTRIES * 2, config.CACHE_TTL_SECONDS * 4)
-    logger.info("✓ Cache initialized (query=%d, llm=%d, embed=%d max)",
-                _query_cache._max, _llm_cache._max, _embedding_cache._max)
+    if config.PIPELINE_CACHE_ENABLED:
+        _pipeline_cache = InMemoryCache(config.CACHE_MAX_ENTRIES // 4, config.PIPELINE_CACHE_TTL)
+    logger.info("✓ Cache initialized (query=%d, llm=%d, embed=%d, pipeline=%s max)",
+                _query_cache._max, _llm_cache._max, _embedding_cache._max,
+                _pipeline_cache._max if _pipeline_cache else 'OFF')
 
 
 def make_key(namespace: str, *args) -> str:
@@ -138,6 +142,17 @@ def get_embedding(key: str) -> Optional[Any]:
 def set_embedding(key: str, value: Any, ttl: int | None = None):
     if _embedding_cache: _embedding_cache.set(key, value, ttl)
 
+def get_pipeline(key: str) -> Optional[Any]:
+    return _pipeline_cache.get(key) if _pipeline_cache else None
+
+def set_pipeline(key: str, value: Any, ttl: int | None = None):
+    if _pipeline_cache: _pipeline_cache.set(key, value, ttl)
+
+def make_pipeline_key(query: str, mode: str, language: str) -> str:
+    """Create a normalized pipeline cache key."""
+    normalized = query.strip().lower()
+    return make_key("pipeline", normalized, mode, language)
+
 
 def check_rate_limit(session_id: str, limit: int | None = None) -> bool:
     """Returns True if within rate limit, False if exceeded."""
@@ -158,5 +173,7 @@ def get_cache_stats() -> dict:
         "query_cache": _query_cache.stats if _query_cache else None,
         "llm_cache": _llm_cache.stats if _llm_cache else None,
         "embedding_cache": _embedding_cache.stats if _embedding_cache else None,
+        "pipeline_cache": _pipeline_cache.stats if _pipeline_cache else None,
         "enabled": config.CACHE_ENABLED,
+        "pipeline_cache_enabled": config.PIPELINE_CACHE_ENABLED,
     }

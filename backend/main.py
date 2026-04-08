@@ -15,7 +15,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 import config
 from models.database import init_db
-from services import retrieval, structured_nav, cache, embeddings
+from services import retrieval, structured_nav, cache, embeddings, cross_references
 from services.reasoning import init_client
 from services.audit import init_audit
 from services.gemini_rest import close_client as close_gemini_client
@@ -76,11 +76,18 @@ async def lifespan(app: FastAPI):
     except Exception as e:
        logger.error("❌ Embeddings failed: %s", str(e))
        logger.info("⚠ Continuing without embeddings (fallback active)")
+
+    # 9. Build cross-reference index
+    corpus_sections = retrieval.get_corpus_sections()
+    cross_references.build_index(corpus_sections)
+    xref_stats = cross_references.get_stats()
+    logger.info("✓ Cross-references: %d fwd, %d rev refs",
+                xref_stats['total_forward_refs'], xref_stats['total_reverse_refs'])
     
     elapsed = (time.monotonic() - start) * 1000
     logger.info("=" * 60)
     logger.info("  NYAYA-SAATHI 3.0 — Ready! (%.0fms startup)", elapsed)
-    logger.info("  Pipeline: Safety → Query Engine → Tri-Modal RAG → Debate → Grounding")
+    logger.info("  Pipeline: Cache → Safety → Query → Retrieval → Fusion → Context → Route → Gen → Ground → Exec")
     logger.info("  Debate Engine: %s", "ENABLED" if config.DEBATE_ENABLED else "DISABLED")
     logger.info("  Cache: %s", "ENABLED" if config.CACHE_ENABLED else "DISABLED")
     logger.info("  Auth: JWT | Anonymous: %s", "ALLOWED" if config.ALLOW_ANONYMOUS else "DISABLED")

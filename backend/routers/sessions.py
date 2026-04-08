@@ -9,6 +9,7 @@ from models.database import (
     get_user_sessions, get_session_with_messages,
     delete_session, update_session_title, search_user_history,
     get_anonymous_sessions, search_anonymous_history,
+    delete_anonymous_session,
 )
 
 logger = logging.getLogger(__name__)
@@ -69,9 +70,16 @@ async def rename_session(request: Request, session_id: str, title: str = Query(.
 
 @router.delete("/{session_id}")
 async def remove_session(request: Request, session_id: str):
-    """Delete a session and all its messages."""
-    user = await require_auth(request)
-    deleted = await delete_session(session_id, user["id"])
+    """Delete a session and all its messages.
+    Authenticated users can delete their own sessions.
+    Anonymous users can delete anonymous sessions.
+    """
+    user = await get_current_user(request)
+    if user:
+        deleted = await delete_session(session_id, user["id"])
+    else:
+        # Anonymous: only allow deleting sessions with no user_id
+        deleted = await delete_anonymous_session(session_id)
     if not deleted:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Session not found")
     return {"deleted": True, "id": session_id}

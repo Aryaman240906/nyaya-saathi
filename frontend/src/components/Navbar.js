@@ -19,8 +19,12 @@ export default function Navbar({ onToggleSidebar }) {
   const handleLogout = async () => {
     await logout();
     setUser(null);
-    // Reload page to reset state safely
-    window.location.reload();
+    // Clear any persisted session state
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("ns_current_session");
+    }
+    // Full redirect to reset all React state cleanly
+    window.location.href = "/";
   };
 
   const handleAuthSuccess = () => {

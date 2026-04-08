@@ -216,3 +216,74 @@ def _build_urgency_response(level: str, category: str) -> UrgencyInfo:
         helplines=relevant_helplines,
         immediate_actions=actions_map.get(category, []),
     )
+
+
+# ── Post-Response Safety Check ─────────────────────────────────
+_DANGEROUS_ADVICE_PATTERNS = [
+    r"\btake\s+(the\s+)?law\s+into\s+(your|one'?s?)\s+(own\s+)?hands?\b",
+    r"\bviolence\s+is\s+(the\s+)?(only|best)\s+(option|way|solution)\b",
+    r"\bthreat(en)?\s+(them|him|her)\b",
+    r"\bbribe\b(?!.*\billegal\b)(?!.*\bdon'?t\b)(?!.*\bnot\b)",
+    r"\bfake\s+(document|evidence|affidavit|complaint)\b",
+    r"\bforged?\b(?!.*\billegal\b)(?!.*\boffence\b)(?!.*\bpunish\b)",
+    r"\b(destroy|hide|tamper)\s+(the\s+)?(evidence|documents?)\b",
+]
+
+_OUT_OF_SCOPE_PATTERNS = [
+    r"\b(US|UK|Australian|Canadian|American|British)\s+(law|court|constitution)\b",
+    r"\b(federal\s+court|supreme\s+court\s+of\s+the\s+united\s+states)\b",
+    r"\b(amendment)\s+to\s+the\s+(us|american)\s+constitution\b",
+]
+
+
+def post_response_check(response_text: str) -> dict:
+    """
+    Post-response safety and legal scope check.
+    Scans LLM output for:
+    - Dangerous/illegal advice
+    - Out-of-scope (non-Indian law) references
+    - Missing disclaimers
+
+    Returns: {safe: bool, warnings: list[str], sanitized_text: str}
+    """
+    warnings = []
+    sanitized = response_text
+    text_lower = response_text.lower()
+
+    # 1. Check for dangerous advice
+    for pattern in _DANGEROUS_ADVICE_PATTERNS:
+        if re.search(pattern, text_lower):
+            warnings.append(f"Potentially dangerous advice detected")
+            # Add a safety prefix
+            sanitized = (
+                "⚠️ **Safety Notice:** Some content in this response may need careful "
+                "interpretation. Always follow legal channels and never take extra-legal action.\n\n"
+                + sanitized
+            )
+            break  # One warning is enough
+
+    # 2. Check for out-of-scope references
+    for pattern in _OUT_OF_SCOPE_PATTERNS:
+        if re.search(pattern, text_lower):
+            warnings.append("Out-of-scope legal reference detected (non-Indian law)")
+            sanitized += (
+                "\n\n> ⚠️ *Note: This response may contain references to non-Indian legal systems. "
+                "Nyaya-Saathi is designed for Indian law only.*\n"
+            )
+            break
+
+    # 3. Check for missing disclaimer
+    has_disclaimer = any(marker in text_lower for marker in [
+        "disclaimer", "legal advice", "consult a",
+        "qualified lawyer", "qualified advocate", "nalsa",
+    ])
+    if not has_disclaimer:
+        warnings.append("Response missing legal disclaimer")
+        # Don't modify text here — disclaimer is added by grounding.add_disclaimer()
+
+    return {
+        "safe": len(warnings) == 0,
+        "warnings": warnings,
+        "sanitized_text": sanitized,
+    }
+
