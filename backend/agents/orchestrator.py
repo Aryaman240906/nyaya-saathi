@@ -155,25 +155,77 @@ async def run_debate(
         # We must manually inject the structured execution plan so the frontend Markdown renders it natively!
         primary_law = next((l for l in validator_result.get("applicable_law", []) if l.get("is_primary")), None)
         if primary_law:
-            final_text += f"\n\n### ⚖️ Primary Applicable Law\n**{primary_law.get('act')} (Section {primary_law.get('section')})**\n> *{primary_law.get('relevance')}*\n*(Suitability Score: {primary_law.get('suitability_score')}/100)*\n"
+            final_text += f"""
+<br>
+<div class="premium-glass-strong rounded-xl p-5 my-4 border-l-4 border-l-indigo-500">
+  <h3 class="text-indigo-400 m-0 pb-1 text-sm font-bold uppercase tracking-widest flex items-center gap-2">⚖️ Primary Applicable Law</h3>
+  <div class="font-bold text-white text-lg mb-2">{primary_law.get('act')} (Section {primary_law.get('section')})</div>
+  <div class="text-zinc-300 text-sm mb-3">{primary_law.get('relevance')}</div>
+  <div class="text-xs font-mono text-indigo-400">⚡ Suitability Score: {primary_law.get('suitability_score')}/100</div>
+</div>
+"""
+        
+        rights = validator_result.get("your_rights", [])
+        if rights:
+            rights_html = ''.join(f'<li class="text-zinc-300 text-sm">{r}</li>' for r in rights)
+            final_text += f"""
+<div class="premium-glass bg-white/5 rounded-xl p-5 my-4 border border-white/10">
+  <h3 class="text-amber-400 m-0 pb-3 text-sm font-bold uppercase tracking-widest">🛡️ Your Rights</h3>
+  <ul class="space-y-2 m-0 pl-4">
+    {rights_html}
+  </ul>
+</div>
+"""
         
         actions = validator_result.get("action_steps", [])
         if actions:
-            final_text += "\n\n### 🚀 Executable Plan\n"
+            final_text += '''
+<div class="my-6">
+  <h3 class="text-emerald-400 text-sm font-bold uppercase tracking-widest mb-4">🚀 Executable Plan</h3>
+'''
             for act in actions:
-                final_text += f"{act.get('step')}. **{act.get('action')}** — {act.get('details')} *(Timeline: {act.get('timeline')})*\n"
+                final_text += f"""
+  <div class="premium-glass bg-white/5 rounded-xl p-4 mb-3 border border-white/5 hover:border-emerald-500/30 transition-colors">
+    <div class="flex items-start gap-3">
+      <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{act.get('step')}</div>
+      <div>
+        <div class="font-bold text-white mb-1">{act.get('action')}</div>
+        <div class="text-sm text-zinc-300 mb-2">{act.get('details')}</div>
+        <div class="text-xs font-mono text-emerald-400">Timeline: {act.get('timeline')}</div>
+      </div>
+    </div>
+  </div>
+"""
+            final_text += "</div>\n"
                 
         docs = validator_result.get("documents_needed", [])
         if docs:
-            final_text += "\n\n### 📄 Required Documents\n"
-            for d in docs:
-                final_text += f"- {d}\n"
+            docs_html = ''.join(f'<li class="text-zinc-300 text-sm">{d}</li>' for d in docs)
+            final_text += f"""
+<div class="premium-glass bg-white/5 rounded-xl p-5 my-4 border border-white/10">
+  <h3 class="text-cyan-400 m-0 pb-3 text-sm font-bold uppercase tracking-widest">📄 Required Documents</h3>
+  <ul class="space-y-2 m-0 pl-4">
+    {docs_html}
+  </ul>
+</div>
+"""
                 
         auths = validator_result.get("authorities_to_approach", [])
         if auths:
-            final_text += "\n\n### 🏢 Where to Go\n"
+            final_text += '''
+<div class="my-6">
+  <h3 class="text-purple-400 text-sm font-bold uppercase tracking-widest mb-4">🏢 Where to Go</h3>
+  <div class="grid grid-cols-1 gap-3">
+'''
             for a in auths:
-                final_text += f"- **{a.get('name')}**: {a.get('contact')} *(Submit when: {a.get('when')})*\n"
+                final_text += f"""
+    <div class="premium-glass bg-white/5 rounded-xl p-4 border border-white/5 hover:border-purple-500/30 transition-colors">
+      <div class="font-bold text-white mb-1">{a.get('name')}</div>
+      <div class="text-sm text-zinc-300 mb-2">{a.get('contact')}</div>
+      <div class="text-xs font-mono text-purple-400">Submit: {a.get('when')}</div>
+    </div>
+"""
+            final_text += "  </div>\n</div>\n"
 
         if final_text:
             yield StreamChunk(type="response", data={"text": final_text})
